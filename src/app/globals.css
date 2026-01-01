@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* --- SETUP DASAR --- */
+
+@layer base {
+  body {
+    /* Warna Background Manual (Wajib Gelap) */
+    background-color: #020617 !important; 
+    color: #f8fafc !important;
+    
+    /* Gambar Background: Layering Gradient & Logo */
+    /* Urutan: Paling atas -> Paling bawah */
+    background-image: 
+      /* 1. Efek Glow Merah di atas */
+      radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+      
+      /* 2. Efek Glow Biru di pojok */
+      radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+      
+      /* 3. Overlay Gelap Transparan (Supaya logo tidak terlalu terang & mengganggu teks) */
+      linear-gradient(rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.95)),
+      
+      /* 4. Logo di /public (Sekarang menggunakan format .jpeg) */
+      url('/crypto-slayer.jpeg');
+
+    /* Posisi: Gradient cover, Logo di tengah */
+    background-position: center, center, center, center;
+    
+    /* Ukuran: Gradient full, Logo disesuaikan (500px agar tidak terlalu besar/kecil) */
+    background-size: cover, cover, cover, 1000px; 
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efek Fixed: Logo diam saat halaman discroll */
+    min-height: 100vh;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Utilitas Sembunyikan Scrollbar */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
